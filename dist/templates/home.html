@@ -1,1 +1,8 @@
-<h1>Home Page</h1>
+<div class="container-fluid">
+    <aside class="rooms-aside col-md-3">
+        <h2>Bloc Chat</h2>
+        <ul class="rooms-list">
+            <li class="room" ng-repeat="room in main.rooms.all">{{room.$value}}</li>
+        </ul>
+    </aside>
+</div>
