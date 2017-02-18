@@ -2,12 +2,18 @@
 <html ng-app="blocChat">
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" contents="width=device-width, initial-scale=1">
     <title>Bloc Chat</title>
+    <!-- Latest compiled and minified CSS (Bootstrap) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
     
+    <ui-view></ui-view>
     
+    <!-- Latest compiled and minified JavaScript (Bootstrap) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <!-- ui-router -->
@@ -28,5 +34,7 @@
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
     <script src="/scripts/app.js"></script>
+    <script src="/scripts/services/Room.js"></script>
+    <script src="/scripts/controllers/RoomCtrl.js"></script>
 </body>
 </html>
