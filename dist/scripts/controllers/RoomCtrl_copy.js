@@ -1,5 +1,5 @@
 (function() {
-    function RoomCtrl(Room, $uibModal) {
+    function RoomCtrl($firebaseArray, Room, $uibModal) {
         this.Room = Room;
       
         var $ctrl = this;
@@ -23,7 +23,7 @@
     
     angular
         .module('blocChat')
-        .controller('RoomCtrl', ['Room', '$uibModal', RoomCtrl]);
+        .controller('RoomCtrl', ['$firebaseArray', 'Room', '$uibModal', RoomCtrl]);
 })();
 
 
