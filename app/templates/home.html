@@ -1,8 +1,9 @@
 <div class="container-fluid">
-    <aside class="rooms-aside col-md-3">
+    <aside class="rooms-aside col-sm-3">
         <h2>Bloc Chat</h2>
+        <button class="btn btn-primary pull-right newRoomButton" ng-click="main.openModalInstance('sm')">New Room</button>
         <ul class="rooms-list">
-            <li class="room" ng-repeat="room in main.rooms.all">{{room.$value}}</li>
+            <li class="room" ng-repeat="room in main.Room.all">{{room.$value}}</li>
         </ul>
     </aside>
 </div>

@@ -18,8 +18,13 @@ body {
 }
 
 .rooms-aside h2 {
-    margin-left: 3.5rem;
+    margin-left: 2rem;
     margin-bottom: 2.5rem;
+    display: inline-block;
+}
+
+.rooms-aside .newRoomButton {
+    margin-top: 17px;
 }
 
 ul {
@@ -29,5 +34,50 @@ ul {
 ul .room {
     margin-bottom: 1.5rem;
     color: #777;
+    margin-left: -1.7rem;
 }
+
+
+/*==================
+New Room Modal
+===================*/
+
+/*LAYOUT*/
+
+.new-room-form {
+    margin: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+}
+
+.new-room-form label {
+    display: none;
+}
+
+.new-room-form input[type="text"] {
+    width: 100%;
+    display: inline-block;
+    height: 3.5rem;
+    margin-bottom: 2rem;
+    padding-left: 1.3rem;
+}
+
+.modal-header button,
+.modal-header .modal-title {
+    display: inline-block;
+}
+
+.modal-header button {
+    margin-left: 3.5rem;
+}
+
+.new-room-form .btn {
+    padding: auto auto;
+    text-align: center;
+    width: 47%;
+    margin: 0 0.2rem;
+}
+
+
 

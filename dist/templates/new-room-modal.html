@@ -1,0 +1,17 @@
+<div class="new-room-modal">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Create new room</h3>
+        <button type="button" class="close" aria-label="Close" ng-click="$ctrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form class="new-room-form">
+            <label for="new-room-name">Enter a room name</label>
+            <input type="text" name="new-room" placeholder="Enter a room name" id="new-room-name" ng-model="Room.newRoom">
+<!--            <p>{{Room.newRoom}}</p> Test 2 way data binding -->
+            <button type="button" class="btn btn-default cancel" ng-click="$ctrl.cancel()">Cancel</button>
+            <button type="submit" class="btn btn-primary submit-new-room" ng-click="$ctrl.addRoom(Room.newRoom)">Create Room</button>
+        </form>
+    </div>
+</div>
