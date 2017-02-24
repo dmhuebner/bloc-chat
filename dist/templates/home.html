@@ -1,9 +1,32 @@
 <div class="container-fluid">
+    <!-- Room List -->
     <aside class="rooms-aside col-sm-3">
         <h2>Bloc Chat</h2>
         <button class="btn btn-primary pull-right newRoomButton" ng-click="main.openModalInstance('sm')">New Room</button>
         <ul class="rooms-list">
-            <li class="room" ng-repeat="room in main.Room.all">{{room.$value}}</li>
+            <li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room.$value)" ng-class="{active: main.isActive(room.$value)}">{{room.$value}}</li>
         </ul>
     </aside>
+    
+    <!-- Room List -->
+    <section class="room-section col-sm-9">
+        <h4 class="room-name">{{main.activeRoom}}</h4>
+        <ul class="message-list">
+            <li class="message-list-message">
+                <span class="message-date pull-right">date</span>
+                <h6 class="message-author">John Doe</h6>
+                <span class="message-body">Message Body</span>
+            </li>
+            <li class="message-list-message">
+                <span class="message-date pull-right">date</span>
+                <h6 class="message-author">Jane Someone</h6>
+                <span class="message-body">How's it going?</span>
+            </li>
+            <li class="message-list-message">
+                <span class="message-date pull-right">date</span>
+                <h6 class="message-author">John Doe</h6>
+                <span class="message-body">Not Bad! How are you?</span>
+            </li>
+        </ul>
+    </section>
 </div>

@@ -12,6 +12,14 @@ body {
     height: 100vh;
 }
 
+ul {
+    list-style-type: none;
+}
+
+/*==================
+Room Aside
+===================*/
+
 .rooms-aside {
     min-height: 100%;
     background-color: #ccc;
@@ -24,17 +32,63 @@ body {
 }
 
 .rooms-aside .newRoomButton {
-    margin-top: 17px;
+    margin: 2rem auto 0 auto;
 }
 
-ul {
-    list-style-type: none;
+.rooms-list {
+    margin-left: -3rem;
 }
 
-ul .room {
-    margin-bottom: 1.5rem;
+.rooms-list .room {
+    padding: 1rem;
     color: #777;
-    margin-left: -1.7rem;
+    border-radius: 4px;
+}
+
+.rooms-list .room:hover {
+    cursor: pointer;
+    background-color: #bbb;
+    color: #333;
+}
+
+.rooms-list .room.active {
+    background-color: #bbb;
+    color: #333;
+}
+
+/*==================
+Message List
+===================*/
+
+.room-section {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.room-section .room-name {
+    margin: 2rem;
+    display: inline-block;
+}
+
+.message-list {
+    padding-left: 0;
+}
+
+.message-list .message-list-message:nth-child(odd) {
+    background-color: #dee7e8;
+}
+
+.message-list .message-list-message {
+    padding: 1rem;
+    padding-left: 2rem;
+}
+
+.message-list-message .message-author {
+    font-weight: bold; 
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 
