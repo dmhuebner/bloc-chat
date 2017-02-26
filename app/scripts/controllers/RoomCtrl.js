@@ -1,8 +1,11 @@
 (function() {
-    function RoomCtrl(Room, $uibModal) {
+    function RoomCtrl(Room, $uibModal, Message) {
         
         //Room Service
         this.Room = Room;
+        
+        //Message Service
+        this.Message = Message;
         
         /**
         * @desc Declare controller local variable as $ctrl
@@ -40,12 +43,21 @@
         $ctrl.activeRoom = "Select a room";
         
         /**
+        * @desc Declare activeRoomMessages property
+        * @type {Object}
+        */
+        $ctrl.activeRoomMessages = null;
+        
+        /**
         * @function viewRoom
         * @desc Sets activeRoom property to roomName param
         * @param {Object} roomName
         */ 
-        $ctrl.setActiveRoom = function(roomName) {
-            $ctrl.activeRoom = roomName;
+        $ctrl.setActiveRoom = function(room) {
+            $ctrl.activeRoom = room;
+            console.log('$ctrl.activeRoom', $ctrl.activeRoom.$id);
+            $ctrl.activeRoomMessages = Message.getByRoomId($ctrl.activeRoom.$id);
+            console.log($ctrl.activeRoomMessages);
         };
         
         /**
@@ -54,13 +66,13 @@
         * @param {Object} item
         */ 
         $ctrl.isActive = function(item) {
-            return $ctrl.activeRoom === item;
+            return $ctrl.activeRoom.$value === item;
         };
     }
     
     angular
         .module('blocChat')
-        .controller('RoomCtrl', ['Room', '$uibModal', RoomCtrl]);
+        .controller('RoomCtrl', ['Room', '$uibModal', 'Message', RoomCtrl]);
 })();
 
 

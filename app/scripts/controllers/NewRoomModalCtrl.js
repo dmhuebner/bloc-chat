@@ -8,7 +8,7 @@
         */
         this.addRoom = function(newRoom) {
             Room.all.$add(newRoom).then(function() {
-                Room.all.$save(newRoom)
+                Room.all.$save(newRoom);
                 $uibModalInstance.close(newRoom);
             });
         };
