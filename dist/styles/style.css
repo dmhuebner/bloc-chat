@@ -133,5 +133,35 @@ New Room Modal
     margin: 0 0.2rem;
 }
 
+/*==================
+Username Modal
+===================*/
 
+/*LAYOUT*/
+
+.set-username-form {
+    margin: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.set-username-form label {
+    font-weight: normal;
+        color: #999;
+}
+
+.set-username-form .btn.set-username {
+    padding: auto;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.set-username-form input[type="text"] {
+    width: 100%;
+    display: inline-block;
+    height: 3.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.3rem;
+}
 
