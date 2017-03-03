@@ -12,7 +12,11 @@
                 $uibModalInstance.close(newRoom);
             });
         };
-      
+
+        /**
+        * @function cancel
+        * @desc Dismisses the modal
+        */
         this.cancel = function() {
             $uibModalInstance.dismiss('cancel');
         };
