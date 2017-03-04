@@ -3,7 +3,7 @@ GENERAL STYLES
 ===================*/
 
 body {
-    background-color: #eee;
+    background-color: #efefef;
     color: #333;
     min-height: 100%;
 }
@@ -65,11 +65,19 @@ Message List
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
+    height: 90%;
 }
 
 .room-section .room-name {
     margin: 2rem;
     display: inline-block;
+}
+
+.room-section-footer {
+    height: 10%;
+    left: 0px;
+    right: 0px;
+    margin-top: -5%;
 }
 
 .message-list {
@@ -91,6 +99,29 @@ Message List
     margin-top: 0.5rem;
 }
 
+/* Message Input */
+
+.new-message-form {
+    display: block;
+    text-align: center;
+}
+
+.new-message-form .message-input-label {
+    display: none;
+}
+
+.new-message-form .message-input {
+    display: inline-block;
+    width: 80%;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-left: -2rem;
+}
+
+.new-message-form .send-message {
+    display: inline-block;
+    width: 12%;
+}
 
 /*==================
 New Room Modal

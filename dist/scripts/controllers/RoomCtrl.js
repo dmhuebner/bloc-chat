@@ -40,7 +40,7 @@
         * @desc Declare activeRoom
         * @type {Object}
         */
-        $ctrl.activeRoom = "Select a room";
+        $ctrl.activeRoom = null;
         
         /**
         * @desc Declare activeRoomMessages property
@@ -66,7 +66,9 @@
         * @param {Object} item
         */ 
         $ctrl.isActive = function(item) {
-            return $ctrl.activeRoom.$value === item;
+            if ($ctrl.activeRoom) {
+                return $ctrl.activeRoom.$value === item;
+            }
         };
     }
     
