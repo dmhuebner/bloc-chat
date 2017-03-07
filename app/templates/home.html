@@ -20,11 +20,13 @@
         </ul>
     </section>
     <!-- Message form -->
-    <footer class="room-section-footer row col-sm-8 col-lg-9 col-sm-offset-4 col-lg-offset-3" ng-show="main.activeRoom">
-        <form class="new-message-form">
-            <label for="message-input" class="message-input-label">Send a message</label>
-            <input type="text" placeholder="Write your message here..." class="message-input" id="message-input">
-            <button class="send-message btn btn-lg btn-primary" type="submit" ng-click="main.Message.send('test')">Send</button>
-        </form>
-    </footer>
+    <div class="row">
+        <footer class="room-section-footer col-sm-8 col-lg-9 col-sm-offset-4 col-lg-offset-3" ng-show="main.activeRoom">
+            <form class="new-message-form">
+                <label for="message-input" class="message-input-label">Send a message</label>
+                <input type="text" placeholder="Write your message here..." class="message-input" id="message-input" ng-model="main.newMessage.content">
+                <button class="send-message btn btn-lg btn-primary" type="submit" ng-click="main.Message.send(main.newMessage)">Send</button>
+            </form>
+        </footer>
+    </div>
 </div>

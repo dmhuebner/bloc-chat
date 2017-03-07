@@ -77,11 +77,12 @@ Message List
     height: 10%;
     left: 0px;
     right: 0px;
-    margin-top: -5%;
 }
 
 .message-list {
     padding-left: 0;
+    padding-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 .message-list .message-list-message:nth-child(odd) {
@@ -103,7 +104,11 @@ Message List
 
 .new-message-form {
     display: block;
-    text-align: center;
+    position: fixed;
+    width: 75%;
+    bottom: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
 }
 
 .new-message-form .message-input-label {
@@ -112,15 +117,16 @@ Message List
 
 .new-message-form .message-input {
     display: inline-block;
-    width: 80%;
+    vertical-align: bottom;
+    width: 68%;
     padding: 1rem;
     margin-right: 1rem;
-    margin-left: -2rem;
 }
 
 .new-message-form .send-message {
     display: inline-block;
-    width: 12%;
+    width: 14%;
+    margin-right: 2rem;
 }
 
 /*==================
