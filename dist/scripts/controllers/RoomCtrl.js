@@ -1,5 +1,5 @@
 (function() {
-    function RoomCtrl(Room, $uibModal, Message) {
+    function RoomCtrl(Room, $uibModal, Message, $cookies) {
         
         //Room Service
         this.Room = Room;
@@ -40,7 +40,7 @@
         * @desc Declare activeRoom
         * @type {Object}
         */
-        $ctrl.activeRoom = "Select a room";
+        $ctrl.activeRoom = null;
         
         /**
         * @desc Declare activeRoomMessages property
@@ -49,15 +49,69 @@
         $ctrl.activeRoomMessages = null;
         
         /**
-        * @function viewRoom
+        * @desc Declare newMessage property
+        * @type {Object}
+        */
+        $ctrl.newMessage = null;
+        
+        /**
+        * @function getCurrentTime
+        * @desc Gets current time in proper format
+        * @param {number} roomId
+        */ 
+        $ctrl.getCurrentTime = function() {
+            var currentDate = new Date();
+            var currentHours = currentDate.getHours();
+            var currentMinutes = currentDate.getMinutes();
+            var amTrue = true;
+            
+            if (currentMinutes < 10) {
+                currentMinutes = '0' + currentMinutes;
+            }
+            
+            if (currentHours > 12) {
+                currentHours = (currentHours - 12);
+                amTrue = false;
+            }
+            
+            var currentTime = (currentHours + ':' + currentMinutes);
+            
+            if (amTrue) {
+                currentTime += 'am';
+            } else {
+                currentTime += 'pm';
+            }
+            
+            return currentTime;
+        };
+        
+        /**
+        * @function prepareNewMessage
+        * @desc prepares the newMessage Object
+        * @param {number} roomId
+        */ 
+        $ctrl.prepareNewMessage = function(roomId) {
+            var currentTime = $ctrl.getCurrentTime();
+            
+            $ctrl.newMessage = {
+                content: '',
+                roomId: $ctrl.activeRoom.$id,
+                username: $cookies.get('blocChatCurrentUser'),
+                sentAt: currentTime
+            };
+        };
+        
+        /**
+        * @function setActiveRoom
         * @desc Sets activeRoom property to roomName param
         * @param {Object} roomName
         */ 
         $ctrl.setActiveRoom = function(room) {
             $ctrl.activeRoom = room;
-            console.log('$ctrl.activeRoom', $ctrl.activeRoom.$id);
+//            console.log('$ctrl.activeRoom', $ctrl.activeRoom.$id);
+//            console.log($ctrl.newMessage);
+            $ctrl.prepareNewMessage($ctrl.activeRoom.$id);
             $ctrl.activeRoomMessages = Message.getByRoomId($ctrl.activeRoom.$id);
-            console.log($ctrl.activeRoomMessages);
         };
         
         /**
@@ -66,13 +120,15 @@
         * @param {Object} item
         */ 
         $ctrl.isActive = function(item) {
-            return $ctrl.activeRoom.$value === item;
+            if ($ctrl.activeRoom) {
+                return $ctrl.activeRoom.$value === item;
+            }
         };
     }
     
     angular
         .module('blocChat')
-        .controller('RoomCtrl', ['Room', '$uibModal', 'Message', RoomCtrl]);
+        .controller('RoomCtrl', ['Room', '$uibModal', 'Message', '$cookies', RoomCtrl]);
 })();
 
 
