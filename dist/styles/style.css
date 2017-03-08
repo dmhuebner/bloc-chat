@@ -17,7 +17,7 @@ ul {
 }
 
 /*==================
-Room Aside
+Rooms Aside
 ===================*/
 
 .rooms-aside {
@@ -71,6 +71,11 @@ Message List
 .room-section .room-name {
     margin: 2rem;
     display: inline-block;
+}
+
+.room-section .not-username-btn {
+    margin-top: -1.7rem;
+    text-decoration: none;
 }
 
 .room-section-footer {

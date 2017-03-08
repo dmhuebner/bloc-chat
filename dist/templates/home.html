@@ -2,7 +2,7 @@
     <!-- Room List -->
     <aside class="rooms-aside col-sm-4 col-lg-3">
         <h2 class="app-title">Bloc Chat</h2>
-        <button class="btn btn-md btn-primary pull-right new-room-button" ng-click="main.openModalInstance('sm')">New Room</button>
+        <button class="btn btn-md btn-primary pull-right new-room-button" ng-click="main.openNewRoomModal('sm')">New Room</button>
         <ul class="rooms-list">
             <li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room.$value)}">{{room.$value}}</li>
         </ul>
@@ -11,6 +11,10 @@
     <!-- Message List -->
     <section class="room-section col-sm-8 col-lg-9 row">
         <h4 class="room-name">{{main.activeRoom.$value}}</h4>
+        <aside class="pull-right">
+            <h4 class="username-display" ng-show="main.Account.currentUsername">Hello {{main.Account.currentUsername}}!</h4>
+            <a href="" class="not-username-btn pull-right small" ng-show="main.Account.currentUsername" ng-click="main.openUsernameModal()"><h6 class="small">Not {{main.Account.currentUsername}}?</h6></a>
+        </aside>
         <ul class="message-list">
             <li class="message-list-message" ng-repeat="message in main.activeRoomMessages">
                 <span class="message-date pull-right">{{message.sentAt}}</span>

@@ -1,11 +1,14 @@
 (function() {
-    function RoomCtrl(Room, $uibModal, Message, $cookies) {
+    function RoomCtrl(Room, $uibModal, Message, $cookies, Account) {
         
         //Room Service
         this.Room = Room;
         
         //Message Service
         this.Message = Message;
+        
+        //Account Service
+        this.Account = Account;
         
         /**
         * @desc Declare controller local variable as $ctrl
@@ -19,8 +22,8 @@
         */
         $ctrl.rooms = Room.all;
         
-        //$uibModal service openModalInstance controller property
-        $ctrl.openModalInstance = function(size) {
+        //$uibModal service openModalInstance (new room modal)
+        $ctrl.openNewRoomModal = function(size) {
             var modalInstance = $uibModal.open({
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
@@ -31,6 +34,26 @@
                 resolve: {
                     rooms: function () {
                         return $ctrl.rooms;
+                    }
+                }
+            });
+        };
+        
+        //$uibModal service openModalInstance (username modal)
+        var currentUser = $cookies.get('blocChatCurrentUser');
+        $ctrl.openUsernameModal = function() {
+            $uibModal.open({
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: '/templates/username-modal.html',
+                controller: 'UsernameModalCtrl',
+                controllerAs: '$ctrl',
+                size: 'sm',
+//                backdrop  : 'static',
+//                keyboard  : false,
+                resolve: {
+                    currentUser: function () {
+                        return currentUser;
                     }
                 }
             });
@@ -53,6 +76,14 @@
         * @type {Object}
         */
         $ctrl.newMessage = null;
+        
+        /**
+        * @desc Declare currentUsername
+        * @type {String}
+        */
+        $ctrl.getCurrentUsername = function() {
+            Account.getCurrentUsername();
+        };
         
         /**
         * @function getCurrentTime
@@ -108,6 +139,7 @@
         */ 
         $ctrl.setActiveRoom = function(room) {
             $ctrl.activeRoom = room;
+            $ctrl.getCurrentUsername();
 //            console.log('$ctrl.activeRoom', $ctrl.activeRoom.$id);
 //            console.log($ctrl.newMessage);
             $ctrl.prepareNewMessage($ctrl.activeRoom.$id);
@@ -128,7 +160,7 @@
     
     angular
         .module('blocChat')
-        .controller('RoomCtrl', ['Room', '$uibModal', 'Message', '$cookies', RoomCtrl]);
+        .controller('RoomCtrl', ['Room', '$uibModal', 'Message', '$cookies', 'Account', RoomCtrl]);
 })();
 
 

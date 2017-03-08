@@ -1,6 +1,9 @@
 <div class="new-user-modal">
     <div class="modal-header">
         <h3 class="modal-title" id="modal-title">Set a username</h3>
+        <button type="button" class="close" aria-label="Close" ng-click="$ctrl.cancel()" ng-show="$ctrl.Account.currentUsername">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     <div class="modal-body" id="modal-body">
         <form class="set-username-form">

@@ -1,7 +1,8 @@
 (function() {
     function BlocChatCookies($cookies, $uibModal) {
         var currentUser = $cookies.get('blocChatCurrentUser');
-        if (!currentUser || currentUser === '') {
+        
+        var openUsernameModal = function() {
             $uibModal.open({
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
@@ -17,6 +18,10 @@
                     }
                 }
             });
+        };
+        
+        if (!currentUser || currentUser === '') {
+            openUsernameModal();
         }
         
     }
