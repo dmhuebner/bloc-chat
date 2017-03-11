@@ -13,7 +13,7 @@
         <h4 class="room-name">{{main.activeRoom.$value}}</h4>
         <aside class="pull-right">
             <h4 class="username-display" ng-show="main.Account.currentUsername">Hello {{main.Account.currentUsername}}!</h4>
-            <a href="" class="not-username-btn pull-right small" ng-show="main.Account.currentUsername" ng-click="main.openUsernameModal()"><h6 class="small">Not {{main.Account.currentUsername}}?</h6></a>
+            <button href="" class="not-username-btn btn btn-default btn-xs" ng-show="main.Account.currentUsername" ng-click="main.logout()"><h6 class="small">Logout</h6></button>
         </aside>
         <ul class="message-list">
             <li class="message-list-message" ng-repeat="message in main.activeRoomMessages">
@@ -23,6 +23,7 @@
             </li>
         </ul>
     </section>
+    
     <!-- Message form -->
     <div class="row">
         <footer class="room-section-footer col-sm-8 col-lg-9 col-sm-offset-4 col-lg-offset-3" ng-show="main.activeRoom">

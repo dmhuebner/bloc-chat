@@ -74,8 +74,12 @@ Message List
 }
 
 .room-section .not-username-btn {
-    margin-top: -1.7rem;
-    text-decoration: none;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.username-display {
+    display: inline-block;
 }
 
 .room-section-footer {
@@ -185,25 +189,35 @@ Username Modal
     margin: auto;
     padding-left: 5%;
     padding-right: 5%;
+    text-align: center;
+}
+
+.modal-header .login-modal-title {
+    text-align: center;
+    margin-left: 2rem;
 }
 
 .set-username-form label {
     font-weight: normal;
-        color: #999;
+    color: #999;
 }
 
-.set-username-form .btn.set-username {
+.set-username-form .btn.set-username,
+.set-username-form .btn.signup {
     padding: auto;
     margin: auto;
-    text-align: center;
-    width: 100%;
+    width: 47%;
 }
 
-.set-username-form input[type="text"] {
+.set-username-form .form-input {
     width: 100%;
     display: inline-block;
     height: 3.5rem;
     margin-bottom: 1rem;
     padding-left: 1.3rem;
 }
+
+/*==================
+UTILITY CLASSES
+===================*/
 

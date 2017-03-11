@@ -1,0 +1,26 @@
+<div class="new-user-modal">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Create a username</h3>
+        <button type="button" class="close" aria-label="Close" ng-click="$ctrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form class="set-username-form">
+            <label for="set-username" class="hide">This name will appear when you send messages</label>
+            <input type="text" name="set-username" placeholder="Enter a username" id="set-username" ng-model="$ctrl.Account.usernameInput" class="form-input">
+            <label for="set-email" class="hide">Email</label>
+            <input type="email" name="set-email" placeholder="Enter your email" id="set-email" ng-model="$ctrl.Account.emailInput" class="form-input">
+            <label for="set-password" class="hide">Password</label>
+            <input type="password" name="set-password" placeholder="Password" id="set-password" ng-model="$ctrl.Account.passwordInput" class="form-input">
+            <label for="confirm-password" class="hide">Confirm Password</label>
+            <input type="password" name="confirm-password" placeholder="Confirm Password" id="confirm-password" ng-model="$ctrl.Account.confirmPasswordInput" class="form-input">
+            <p>{{$ctrl.Account.usernameInput}}</p><!-- Test 2 way data binding -->
+            <p>{{$ctrl.Account.emailInput}}</p>
+            <p>{{$ctrl.Account.passwordInput}}</p>
+            <p>{{$ctrl.Account.confirmPasswordInput}}</p>
+            <button type="submit" class="btn btn-default signup" ng-click="$ctrl.cancel()">Go Back</button>
+            <button type="submit" class="btn btn-primary signup" ng-click="$ctrl.signup($ctrl.Account.emailInput, $ctrl.Account.passwordInput)">Sign Up!</button>
+        </form>
+    </div>
+</div>

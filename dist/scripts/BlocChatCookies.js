@@ -22,6 +22,7 @@
         
         if (!currentUser || currentUser === '') {
             openUsernameModal();
+            console.log(currentUser);
         }
         
     }

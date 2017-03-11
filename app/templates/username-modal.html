@@ -1,16 +1,19 @@
 <div class="new-user-modal">
     <div class="modal-header">
-        <h3 class="modal-title" id="modal-title">Set a username</h3>
+        <h3 class="modal-title login-modal-title" id="modal-title">Login to chat!</h3>
         <button type="button" class="close" aria-label="Close" ng-click="$ctrl.cancel()" ng-show="$ctrl.Account.currentUsername">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body" id="modal-body">
         <form class="set-username-form">
-            <label for="set-username">This name will appear when you send messages</label>
-            <input type="text" name="set-username" placeholder="Enter a username" id="set-username" ng-model="usernameInput">
+            <label for="set-email" class="hide">Email</label>
+            <input type="email" name="set-email" placeholder="Email" id="set-email" ng-model="$ctrl.Account.emailInput" class="form-input">
+            <label for="set-password" class="hide">Password</label>
+            <input type="password" name="set-password" placeholder="Password" id="set-password" ng-model="$ctrl.Account.passwordInput" class="form-input">
 <!--            <p>{{usernameInput}}</p>  Test 2 way data binding -->
-            <button type="submit" class="btn btn-primary set-username" ng-click="$ctrl.setUsername(usernameInput)">Set Username</button>
+            <button type="submit" class="btn btn-primary set-username" ng-click="$ctrl.login($ctrl.Account.emailInput, $ctrl.Account.passwordInput)">Login</button>
+            <button class="btn btn-default signup" ng-click="$ctrl.openSignupModal()">Sign Up</button>
         </form>
     </div>
 </div>

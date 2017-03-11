@@ -10,6 +10,8 @@
         //Account Service
         this.Account = Account;
         
+        var currentUser = $cookies.get('blocChatCurrentUser');
+        
         /**
         * @desc Declare controller local variable as $ctrl
         * @type {Object}
@@ -40,13 +42,12 @@
         };
         
         //$uibModal service openModalInstance (username modal)
-        var currentUser = $cookies.get('blocChatCurrentUser');
         $ctrl.openUsernameModal = function() {
             $uibModal.open({
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
-                templateUrl: '/templates/username-modal.html',
-                controller: 'UsernameModalCtrl',
+                templateUrl: '/templates/signup-modal.html',
+                controller: 'SignupModalCtrl',
                 controllerAs: '$ctrl',
                 size: 'sm',
 //                backdrop  : 'static',
@@ -83,6 +84,16 @@
         */
         $ctrl.getCurrentUsername = function() {
             Account.getCurrentUsername();
+        };
+        
+       /**
+        * @function logout
+        * @desc logins with email and password
+        */
+        $ctrl.logout = function() {
+            $ctrl.Account.auth.$signOut();
+            $cookies.remove('blocChatCurrentUser');
+            location.reload();
         };
         
         /**
