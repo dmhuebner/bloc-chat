@@ -10,13 +10,13 @@
         //Account Service
         this.Account = Account;
         
-        var currentUser = $cookies.get('blocChatCurrentUser');
         
         /**
         * @desc Declare controller local variable as $ctrl
         * @type {Object}
         */
         var $ctrl = this;
+        
         
         /**
         * @desc Declare rooms property in controller scope
@@ -83,8 +83,10 @@
         * @type {String}
         */
         $ctrl.getCurrentUsername = function() {
-            Account.getCurrentUsername();
+            $ctrl.currentUser = Account.getCurrentUsername();
         };
+        
+        $ctrl.currentUser = $cookies.get('blocChatCurrentUser');
         
        /**
         * @function logout

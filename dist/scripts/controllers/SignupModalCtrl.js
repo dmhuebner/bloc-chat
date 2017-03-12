@@ -9,15 +9,32 @@
         var $ctrl = this;
         
         /**
+        * @desc Declare currentUsername
+        * @type {String}
+        */
+        $ctrl.getCurrentUsername = function() {
+            $ctrl.Account.getCurrentUsername();
+        };
+        
+        $ctrl.getCurrentUser = function() {
+            $ctrl.Account.getCurrentUser();
+        };
+        
+        /**
         * @function setUsername
         * @desc Adds the Room.newRoom (ngModel of input) object to 'all' $firebaseArray
         */
         $ctrl.setUsername = function(username) {
             if (username && username !== '') {
                 $cookies.put('blocChatCurrentUser', username);
-                $ctrl.Account.currentUsername = username;
+                console.log(username);
+                Account.currentUser = username;
+                console.log(Account.currentUser);
+                $ctrl.getCurrentUsername();
+//                $ctrl.Account.currentUsername = username;
             }
         };
+        
         
         /**
         * @function signup
@@ -28,13 +45,18 @@
                 $ctrl.auth.$createUserWithEmailAndPassword(email, password)
                 .then(function(firebaseUser) {
                     console.log("User " + firebaseUser.uid + " created successfully!");
+                    $ctrl.Account.currentUserId = firebaseUser.uid;
                 })
                 .catch(function(error) {
                 console.error("Error: ", error);
                 });
                 console.log($ctrl.Account.emailInput, $ctrl.Account.passwordInput);
+                $ctrl.Account.createUsername($ctrl.Account.usernameInput);
                 $ctrl.setUsername($ctrl.Account.usernameInput);
+                $ctrl.getCurrentUser();
                 $uibModalInstance.dismiss('submit');
+            } else {
+                window.alert("Those passwords don't match!");
             }
         };
         

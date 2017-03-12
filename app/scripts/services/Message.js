@@ -4,10 +4,6 @@
         var messages = null;
         var currentRoom = $cookies.get('blocChatCurrentRoom');
         
-//        Message.newMessage = {
-//            content: '',
-//            username: 'test'
-//        };
         
         return {
             getByRoomId: function(roomId) {
