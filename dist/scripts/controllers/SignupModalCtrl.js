@@ -18,6 +18,7 @@
         
         $ctrl.getCurrentUser = function() {
             $ctrl.Account.getCurrentUser();
+            console.log(Account.currentUser);
         };
         
         /**
@@ -27,7 +28,7 @@
         $ctrl.setUsername = function(username) {
             if (username && username !== '') {
                 $cookies.put('blocChatCurrentUser', username);
-                console.log(username);
+//                console.log(username);
                 Account.currentUser = username;
                 console.log(Account.currentUser);
                 $ctrl.getCurrentUsername();
@@ -46,15 +47,14 @@
                 .then(function(firebaseUser) {
                     console.log("User " + firebaseUser.uid + " created successfully!");
                     $ctrl.Account.currentUserId = firebaseUser.uid;
+                    $ctrl.Account.createUsername($ctrl.Account.usernameInput);
+                    $ctrl.setUsername($ctrl.Account.usernameInput);
+                    $uibModalInstance.dismiss('submit');
                 })
                 .catch(function(error) {
                 console.error("Error: ", error);
                 });
                 console.log($ctrl.Account.emailInput, $ctrl.Account.passwordInput);
-                $ctrl.Account.createUsername($ctrl.Account.usernameInput);
-                $ctrl.setUsername($ctrl.Account.usernameInput);
-                $ctrl.getCurrentUser();
-                $uibModalInstance.dismiss('submit');
             } else {
                 window.alert("Those passwords don't match!");
             }

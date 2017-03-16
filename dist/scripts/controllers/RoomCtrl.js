@@ -66,6 +66,8 @@
         */
         $ctrl.activeRoom = null;
         
+        $ctrl.activeUser = Account.currentUser;
+        
         /**
         * @desc Declare activeRoomMessages property
         * @type {Object}
@@ -83,10 +85,13 @@
         * @type {String}
         */
         $ctrl.getCurrentUsername = function() {
-            $ctrl.currentUser = Account.getCurrentUsername();
+            Account.getCurrentUsername();
+            $ctrl.currentUser = Account.currentUser;
         };
         
-        $ctrl.currentUser = $cookies.get('blocChatCurrentUser');
+        $ctrl.currentUser = Account.currentUser;
+        
+//        $ctrl.currentUser = $cookies.get('blocChatCurrentUser');
         
        /**
         * @function logout

@@ -1,9 +1,11 @@
 (function() {
-    function Account($cookies, $firebaseAuth, $firebaseArray) {
+    function Account($cookies, $firebaseAuth, $firebaseObject) {
         
         var ref = firebase.database().ref().child('users');
         
-        var users = $firebaseArray(ref);
+        var users = $firebaseObject(ref);
+        
+//        var userObject = $firebaseObject(ref);
         
         Account.auth = $firebaseAuth();
         
@@ -18,6 +20,8 @@
         
         Account.currentUserId = null;
         
+        Account.newUser = {};
+        
         return {
             currentUsername: $cookies.get('blocChatCurrentUser'),
             getCurrentUsername: function() {
@@ -30,25 +34,35 @@
             getCurrentUser: function() {
                 var currentUserAuthObj = Account.auth.$getAuth();
                 if (currentUserAuthObj) {
-                    var users = $firebaseArray(ref);
-                    console.log(users);
+//                    console.log(users);
                     console.log(currentUserAuthObj.uid);
                     var currentUserId = currentUserAuthObj.uid;
-                    Account.currentUser = users.$getRecord(currentUserId);
-                    console.log(users.$getRecord(currentUserId));
-                    return Account.currentUser;
+                    Account.currentUser = $firebaseObject(ref.child(currentUserId));
+                    console.log(Account.currentUser);
                 }
             },
-            createUsername: function(newUser) {
-                users.$add(newUser).then(function() {
-                    users.$save(newUser);
-                });
-            }
+            createUsername: function(newUsername) {
+//                Account.newUser = {
+//                    username: newUsername,
+//                    userId: userId
+//                };
+                var currentUserAuthObj = Account.auth.$getAuth();
+                if (currentUserAuthObj) {
+//                    console.log(users);
+//                    console.log(currentUserAuthObj.uid);
+                    var currentUserId = currentUserAuthObj.uid;
+//                    var currentUser;
+                    users[currentUserId] = newUsername;
+//                    console.log(currentUser);
+                    users.$save();
+                }
+            },
+            users: users
         };
         
     }
     
     angular
         .module('blocChat')
-        .factory('Account', ['$cookies', '$firebaseAuth', '$firebaseArray', Account]);
+        .factory('Account', ['$cookies', '$firebaseAuth', '$firebaseObject', Account]);
 })();

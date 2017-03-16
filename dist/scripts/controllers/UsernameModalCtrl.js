@@ -1,5 +1,5 @@
 (function() {
-    function UsernameModalCtrl($uibModalInstance, $cookies, Account, $uibModal) {
+    function UsernameModalCtrl($uibModalInstance, $cookies, Account, $uibModal, $firebaseAuth) {
         
         this.Account = Account;
         
@@ -12,8 +12,17 @@
         //Gets current username from cookies
         var currentUser = $cookies.get('blocChatCurrentUser');
         
+//        $ctrl.getCurrentUser = function() {
+//            Account.currentUser = $ctrl.Account.auth.$getAuth();
+//            Account.currentUserId = Account.currentUser.uid;
+//            console.log(Account.currentUserId);
+//            var currentUser = $ctrl.Account.getCurrentUser();
+//            console.log(currentUser);
+//            return currentUser;
+//        };
+        
         $ctrl.getCurrentUser = function() {
-            Account.currentUser = Account.getCurrentUser();
+            Account.getCurrentUser();
             console.log(Account.currentUser);
         };
         
@@ -21,13 +30,25 @@
         * @function setUsername
         * @desc Adds the Room.newRoom (ngModel of input) object to 'all' $firebaseArray
         */
-        $ctrl.setUsername = function() {
-            var currentUsername = $ctrl.getCurrentUser();
-            console.log(currentUsername);
-            $cookies.put('blocChatCurrentUser', currentUsername);
-            Account.currentUser = currentUsername;
-            console.log(Account.currentUser);
-            $uibModalInstance.dismiss('submit');
+//        $ctrl.setUsername = function() {
+//            $ctrl.getCurrentUser();
+//            var currentUsername = Account.currentUser;
+//            console.log(currentUsername);
+//            $cookies.put('blocChatCurrentUser', currentUsername);
+//            console.log(Account.currentUser);
+//            $uibModalInstance.dismiss('submit');
+//        };
+        
+        $ctrl.setUsername = function(username) {
+            if (username && username !== '') {
+                $cookies.put('blocChatCurrentUser', username);
+//                console.log(username);
+                Account.currentUser = username;
+                console.log(Account.currentUser);
+//                $ctrl.getCurrentUsername();
+//                $ctrl.Account.currentUsername = username;
+                $uibModalInstance.dismiss('login');
+            }
         };
         
         /**
@@ -72,8 +93,13 @@
                 $ctrl.Account.auth.$signInWithEmailAndPassword(email, password)
                 .then(function(firebaseUser) {
                     console.log("Signed in as:", firebaseUser.uid);
-                    $ctrl.Account.currentUserId = firebaseUser.uid;
+                    Account.currentUserId = firebaseUser.uid;
+//                    console.log(Account.currentUserId);
+                    var activeUser = $ctrl.Account.users[Account.currentUserId];
                     $ctrl.getCurrentUser();
+                    console.log(activeUser);
+                    $ctrl.setUsername(activeUser);
+                    location.reload();
                 })
                 .catch(function(error) {
                     console.error("Authentication failed:", error);
@@ -87,5 +113,5 @@
     
     angular
         .module('blocChat')
-        .controller('UsernameModalCtrl', ['$uibModalInstance', '$cookies', 'Account', '$uibModal', UsernameModalCtrl]);
+        .controller('UsernameModalCtrl', ['$uibModalInstance', '$cookies', 'Account', '$uibModal', '$firebaseAuth', UsernameModalCtrl]);
 })();
