@@ -15,10 +15,11 @@
             <input type="password" name="set-password" placeholder="Password" id="set-password" ng-model="$ctrl.Account.passwordInput" class="form-input">
             <label for="confirm-password" class="hide">Confirm Password</label>
             <input type="password" name="confirm-password" placeholder="Confirm Password" id="confirm-password" ng-model="$ctrl.Account.confirmPasswordInput" class="form-input">
-            <p>{{$ctrl.Account.usernameInput}}</p><!-- Test 2 way data binding -->
+			<!-- Test 2 way data binding -->
+			<!-- <p>{{$ctrl.Account.usernameInput}}</p>
             <p>{{$ctrl.Account.emailInput}}</p>
             <p>{{$ctrl.Account.passwordInput}}</p>
-            <p>{{$ctrl.Account.confirmPasswordInput}}</p>
+            <p>{{$ctrl.Account.confirmPasswordInput}}</p> -->
             <button type="submit" class="btn btn-default signup" ng-click="$ctrl.cancel()">Go Back</button>
             <button type="submit" class="btn btn-primary signup" ng-click="$ctrl.signup($ctrl.Account.emailInput, $ctrl.Account.passwordInput)">Sign Up!</button>
         </form>
