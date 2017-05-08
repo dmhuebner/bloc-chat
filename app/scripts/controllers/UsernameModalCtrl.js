@@ -89,9 +89,12 @@
                 })
                 .catch(function(error) {
                     console.error("Authentication failed:", error);
+										alert("Authentication failed!: " + "\n" + error);
                 });
 //                $ctrl.getCurrentUser();
-                $uibModalInstance.dismiss('submit');
+								if (error == null) {
+									$uibModalInstance.dismiss('submit');
+								}
             }
         };
 
