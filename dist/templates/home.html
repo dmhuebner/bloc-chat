@@ -1,13 +1,6 @@
 <div class="container-fluid">
-    <!-- Room List -->
-    <aside class="rooms-aside col-sm-4 col-lg-3">
-        <h2 class="app-title">Bloc Chat</h2>
-        <button class="btn btn-md btn-default pull-right new-room-button" ng-click="main.openNewRoomModal('sm')">New Room</button>
-        <ul class="rooms-list">
-            <li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room.$value)}">{{room.$value}}</li>
-        </ul>
-    </aside>
 
+    <!-- Top Nav Bar -->
 		<section class="top-nav-bar">
 			<h4 class="room-name pull-left">{{main.activeRoom.$value}}</h4>
 			<aside class="pull-right username-aside">
@@ -15,6 +8,16 @@
 					<button href="" class="not-username-btn btn btn-default btn-xs" ng-show="main.Account.currentUsername" ng-click="main.logout()"><h6 class="small">Logout</h6></button>
 			</aside>
 		</section>
+
+
+    <!-- Room List -->
+    <aside class="rooms-aside col-sm-4 col-lg-3 scrollable">
+        <h2 class="app-title">Bloc Chat</h2>
+        <button class="btn btn-md btn-default pull-right new-room-button" ng-click="main.openNewRoomModal('sm')">New Room</button>
+        <ul class="rooms-list">
+            <li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room.$value)}">{{room.$value}}</li>
+        </ul>
+    </aside>
 
     <!-- Message List -->
     <section class="room-section col-sm-8 col-lg-9 row scrollable" id="message-section">

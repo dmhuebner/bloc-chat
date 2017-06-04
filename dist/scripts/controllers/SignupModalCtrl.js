@@ -49,7 +49,8 @@
                     $ctrl.Account.currentUserId = firebaseUser.uid;
                     $ctrl.Account.createUsername($ctrl.Account.usernameInput);
                     $ctrl.setUsername($ctrl.Account.usernameInput);
-                    $uibModalInstance.dismiss('submit');
+                    // $uibModalInstance.dismiss('submit');
+										location.reload();
                 })
                 .catch(function(error) {
                 console.error("Error: ", error);
