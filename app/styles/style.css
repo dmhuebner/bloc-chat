@@ -3,7 +3,8 @@ GENERAL STYLES
 ===================*/
 
 body {
-    background-color: #efefef;
+    background: #fcd7d3 url('../assets/images/mountain-sun-background.jpg') no-repeat center;
+		background-size: cover;
     color: #333;
     min-height: 100%;
 }
@@ -16,13 +17,44 @@ ul {
     list-style-type: none;
 }
 
+.top-nav-bar {
+	margin-left: 33.4%;
+	width: 67.5%;
+	height: 6rem;
+	color: #FFF;
+	background-color: rgba(0,0,0, 0.4);
+	box-shadow: 2px 4px 3px rgba(0,0,0,0.5);
+	/*border: 1px solid rgb(0, 129, 175);*/
+	/*margin-bottom: 0.2rem;*/
+}
+
+.username-aside {
+	margin: 1rem;
+	text-shadow: 1px 1px 2px rgba(0,0,0, 0.4);
+}
+
+.top-nav-bar .not-username-btn {
+    display: inline-block;
+    margin-right: 1rem;
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.username-display {
+    display: inline-block;
+		margin-top: 1rem;
+		margin-right: 1rem;
+}
+
 /*==================
 Rooms Aside
 ===================*/
 
 .rooms-aside {
+		margin-top: -6rem;
     min-height: 100%;
-    background-color: #ccc;
+    background-color: rgba(0, 129, 175, 0.6);
+		color: #FFF;
+		box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
 
 .rooms-aside h2 {
@@ -33,6 +65,8 @@ Rooms Aside
 
 .rooms-aside .new-room-button {
     margin: 2rem auto 0 auto;
+		color: #4D2C73;;
+		box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .rooms-list {
@@ -41,19 +75,23 @@ Rooms Aside
 
 .rooms-list .room {
     padding: 1rem;
-    color: #777;
+    color: #FFF;
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     border-radius: 4px;
 }
 
 .rooms-list .room:hover {
     cursor: pointer;
-    background-color: #bbb;
-    color: #333;
+    background-color: rgba(255,255,255,0.9);
+    color: #0081AF;
 }
 
 .rooms-list .room.active {
-    background-color: #bbb;
-    color: #333;
+    background-color: #FFF;
+    color: #4D2C73;
+		border: 1px solid #4D2C73;
+		font-weight: bold;
+		box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 /*==================
@@ -65,46 +103,46 @@ Message List
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
-    height: 90%;
+    max-height: 90%;
 }
 
-.room-section .room-name {
+.room-name {
     margin: 2rem;
     display: inline-block;
-}
-
-.room-section .not-username-btn {
-    display: inline-block;
-    margin-left: 1rem;
-}
-
-.username-display {
-    display: inline-block;
+		text-shadow: 1px 1px 3px rgba(0,0,0, 0.4);
 }
 
 .room-section-footer {
-    height: 10%;
-    left: 0px;
-    right: 0px;
+    /*height: 10%;*/
+    /*left: 0px;
+    right: 0px;*/
+		/*margin-left: -1rem;*/
 }
 
 .message-list {
-    padding-left: 0;
+    padding-left: 0.3rem;
     padding-bottom: 5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.scrollable {
+  height: 100%;
+  overflow: auto;
 }
 
 .message-list .message-list-message:nth-child(odd) {
-    background-color: #dee7e8;
+    background-color: rgba(213, 238, 247, 0.8);
 }
 
 .message-list .message-list-message {
     padding: 1rem;
     padding-left: 2rem;
+		background-color: rgba(255, 255, 255, 0.9);
+		white-space: normal;
 }
 
 .message-list-message .message-author {
-    font-weight: bold; 
+    font-weight: bold;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
 }
@@ -130,12 +168,19 @@ Message List
     width: 68%;
     padding: 1rem;
     margin-right: 1rem;
+		margin-left: -1rem;
+		height: auto;
+		box-shadow: 3px 3px 7px rgba(0,0,0,0.7);
+		/*-webkit-transition: height 0.5s;
+		-moz-transition: height 0.5s;
+		transition: height 0.5s;*/
 }
 
 .new-message-form .send-message {
     display: inline-block;
     width: 14%;
     margin-right: 2rem;
+		box-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 /*==================
@@ -194,7 +239,7 @@ Username Modal
 
 .modal-header .login-modal-title {
     text-align: center;
-    margin-left: 2rem;
+    /*margin-left: 2rem;*/
 }
 
 .set-username-form label {
@@ -220,4 +265,3 @@ Username Modal
 /*==================
 UTILITY CLASSES
 ===================*/
-

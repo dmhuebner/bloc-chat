@@ -1,20 +1,26 @@
 <div class="container-fluid">
+
+    <!-- Top Nav Bar -->
+		<section class="top-nav-bar">
+			<h4 class="room-name pull-left">{{main.activeRoom.$value}}</h4>
+			<aside class="pull-right username-aside">
+					<h4 class="username-display" ng-show="main.Account.currentUsername">Hello {{main.Account.currentUsername}}!</h4>
+					<button href="" class="not-username-btn btn btn-default btn-xs" ng-show="main.Account.currentUsername" ng-click="main.logout()"><h6 class="small">Logout</h6></button>
+			</aside>
+		</section>
+
+
     <!-- Room List -->
-    <aside class="rooms-aside col-sm-4 col-lg-3">
+    <aside class="rooms-aside col-sm-4 col-lg-3 scrollable">
         <h2 class="app-title">Bloc Chat</h2>
-        <button class="btn btn-md btn-primary pull-right new-room-button" ng-click="main.openNewRoomModal('sm')">New Room</button>
+        <button class="btn btn-md btn-default pull-right new-room-button" ng-click="main.openNewRoomModal('sm')">New Room</button>
         <ul class="rooms-list">
             <li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room.$value)}">{{room.$value}}</li>
         </ul>
     </aside>
-    
+
     <!-- Message List -->
-    <section class="room-section col-sm-8 col-lg-9 row">
-        <h4 class="room-name">{{main.activeRoom.$value}}</h4>
-        <aside class="pull-right">
-            <h4 class="username-display" ng-show="main.Account.currentUsername">Hello {{main.Account.currentUsername}}!</h4>
-            <button href="" class="not-username-btn btn btn-default btn-xs" ng-show="main.Account.currentUsername" ng-click="main.logout()"><h6 class="small">Logout</h6></button>
-        </aside>
+    <section class="room-section col-sm-8 col-lg-9 row scrollable" id="message-section">
         <ul class="message-list">
             <li class="message-list-message" ng-repeat="message in main.activeRoomMessages">
                 <span class="message-date pull-right">{{message.sentAt}}</span>
@@ -22,16 +28,24 @@
                 <span class="message-body">{{message.content}}</span>
             </li>
         </ul>
+
+				<footer class="room-section-footer col-sm-8 col-lg-9" ng-show="main.activeRoom">
+						<form class="new-message-form">
+								<label for="message-input" class="message-input-label">Send a message</label>
+								<input type="text" placeholder="Write your message here..." class="message-input" id="message-input" ng-model="main.newMessage.content">
+								<button class="send-message btn btn-lg btn-primary" type="submit" ng-click="main.Message.send(main.newMessage)">Send</button>
+						</form>
+				</footer>
     </section>
-    
+
     <!-- Message form -->
     <div class="row">
-        <footer class="room-section-footer col-sm-8 col-lg-9 col-sm-offset-4 col-lg-offset-3" ng-show="main.activeRoom">
+        <!-- <footer class="room-section-footer col-sm-8 col-lg-9 col-sm-offset-4 col-lg-offset-3" ng-show="main.activeRoom">
             <form class="new-message-form">
                 <label for="message-input" class="message-input-label">Send a message</label>
                 <input type="text" placeholder="Write your message here..." class="message-input" id="message-input" ng-model="main.newMessage.content">
                 <button class="send-message btn btn-lg btn-primary" type="submit" ng-click="main.Message.send(main.newMessage)">Send</button>
             </form>
-        </footer>
+        </footer> -->
     </div>
 </div>
