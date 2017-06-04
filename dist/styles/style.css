@@ -3,9 +3,7 @@ GENERAL STYLES
 ===================*/
 
 body {
-    background-image: url('../assets/images/mountain-sun-background.jpg');
-		background-position: center;
-		background-repeat: no-repeat;
+    background: #fcd7d3 url('../assets/images/mountain-sun-background.jpg') no-repeat center;
 		background-size: cover;
     color: #333;
     min-height: 100%;
