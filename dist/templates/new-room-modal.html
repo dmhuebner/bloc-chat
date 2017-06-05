@@ -21,7 +21,7 @@
 						</div> -->
            	<p ng-show="usersAllowed === true">Add users to your private room after it is created!</p>
             <button type="button" class="btn btn-default cancel" ng-click="$ctrl.cancel()">Cancel</button>
-            <button type="submit" class="btn btn-primary submit-new-room" ng-click="$ctrl.addRoom($ctrl.newRoom)">Create Room</button>
+            <button type="submit" class="btn btn-primary submit-new-room" ng-click="$ctrl.addRoom($ctrl.newRoom, usersAllowed)">Create Room</button>
         </form>
     </div>
 </div>

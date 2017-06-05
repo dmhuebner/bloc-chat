@@ -31,13 +31,22 @@
                 auth.$signInWithEmailAndPassword(email, password);
             },
             auth: $firebaseAuth(),
+						getCurrentUserId: function() {
+							var currentUserAuthObj = Account.auth.$getAuth();
+							if (currentUserAuthObj) {
+									console.log(currentUserAuthObj);
+									var currentUserId = currentUserAuthObj.uid;
+									return currentUserId;
+							}
+						},
             getCurrentUser: function() {
                 var currentUserAuthObj = Account.auth.$getAuth();
                 if (currentUserAuthObj) {
                     // console.log(currentUserAuthObj.uid);
                     var currentUserId = currentUserAuthObj.uid;
                     Account.currentUser = $firebaseObject(ref.child(currentUserId));
-                    // console.log(Account.currentUser);
+                    console.log(Account.currentUser);
+										return Account.currentUser;
                 }
             },
             createUsername: function(newUsername) {

@@ -1,6 +1,7 @@
 (function() {
-    function NewRoomModalCtrl($uibModalInstance, Room) {
+    function NewRoomModalCtrl($uibModalInstance, Room, Account) {
         this.Room = Room;
+				this.Account = Account;
 
 				this.newRoom = '';
 
@@ -9,10 +10,23 @@
         * @desc Adds the Room.newRoom (ngModel of input) object to 'all' $firebaseArray
         */
         this.addRoom = function(newRoom, usersAllowed) {
-            Room.all.$add({name: newRoom, private: usersAllowed || false}).then(function() {
-                Room.all.$save();
-                $uibModalInstance.close();
-            });
+					// If private
+					if (usersAllowed) {
+						var currentUser = this.Account.getCurrentUserId();
+						console.log(currentUser);
+						var users = {};
+						users[currentUser] = true;
+						Room.all.$add({name: newRoom, private: usersAllowed || false, users}).then(function() {
+								Room.all.$save();
+								$uibModalInstance.close();
+						});
+					} else {
+						// If public
+						Room.all.$add({name: newRoom, private: usersAllowed || false}).then(function() {
+								Room.all.$save();
+								$uibModalInstance.close();
+						});
+					}
         };
 
         /**
@@ -26,5 +40,5 @@
 
     angular
         .module('blocChat')
-        .controller('NewRoomModalCtrl', ['$uibModalInstance', 'Room',  NewRoomModalCtrl]);
+        .controller('NewRoomModalCtrl', ['$uibModalInstance', 'Room', 'Account',  NewRoomModalCtrl]);
 })();

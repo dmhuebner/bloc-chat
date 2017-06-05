@@ -204,6 +204,16 @@
                 return $ctrl.activeRoom === item;
             }
         };
+
+				$ctrl.userHasAccess = function(room, userId) {
+					// console.log(room["users"]);
+					// console.log(userId);
+					if (room.private && room["users"].hasOwnProperty(userId)) {
+						return true;
+					} else {
+						return false;
+					}
+				};
     }
 
     angular
