@@ -1,0 +1,18 @@
+<div class="add-user-modal">
+    <div class="modal-header text-center">
+			<button type="button" class="close" aria-label="Close" ng-click="main.cancel()">
+					<span aria-hidden="true">&times;</span>
+			</button>
+        <h3 class="modal-title" id="modal-title">Add Someone!</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form class="new-room-form">
+						<div class="form-group">
+							<label for="new-room-name">Enter a user's email to add</label>
+	            <input type="text" name="new-room" placeholder="Enter user's email to add" id="new-room-name" ng-model="$ctrl.newRoom" class="form-control">
+						</div>
+            <button type="button" class="btn btn-default cancel" ng-click="main.cancel()">Cancel</button>
+            <button type="submit" class="btn btn-primary submit-new-room" ng-click="$ctrl.addRoom($ctrl.newRoom)">Add User</button>
+        </form>
+    </div>
+</div>

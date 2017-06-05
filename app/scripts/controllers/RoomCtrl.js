@@ -41,6 +41,23 @@
             });
         };
 
+				//$uibModal service openModalInstance (Add user to room modal)
+				$ctrl.openAddUserModal = function(size) {
+						var modalInstance = $uibModal.open({
+								ariaLabelledBy: 'modal-title',
+								ariaDescribedBy: 'modal-body',
+								templateUrl: '/templates/add-user-modal.html',
+								controller: 'RoomCtrl',
+								controllerAs: 'main',
+								size: size,
+								resolve: {
+										rooms: function () {
+												return $ctrl.rooms;
+										}
+								}
+						});
+				};
+
         //$uibModal service openModalInstance (username modal)
         $ctrl.openUsernameModal = function() {
             $uibModal.open({
@@ -184,7 +201,7 @@
         */
         $ctrl.isActive = function(item) {
             if ($ctrl.activeRoom) {
-                return $ctrl.activeRoom.$value === item;
+                return $ctrl.activeRoom === item;
             }
         };
     }
