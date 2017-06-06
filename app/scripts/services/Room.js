@@ -2,11 +2,23 @@
     function Room($firebaseArray, $firebaseObject) {
         var ref = firebase.database().ref().child("rooms");
         var rooms = $firebaseArray(ref);
+				var activeRoom = null;
 
-        Room.newRoom = {};
+        Room.newRoom = {}
 
         return {
             all: rooms,
+						setActive: function(room) {
+							console.log(room);
+							activeRoom = room;
+						},
+						getActive: function() {
+							return activeRoom;
+						},
+						save: function(room) {
+							var room = $firebaseObject(room.$id);
+							room.$save;
+						}
 						// getByUserId: function(userId) {
 						// 		var tempRef = ref.child('users');
 						// 		return $firebaseObject(tempRef.child(userId))
