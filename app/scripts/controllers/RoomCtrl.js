@@ -1,5 +1,5 @@
 (function() {
-    function RoomCtrl(Room, $uibModal, Message, $cookies, Account) {
+    function RoomCtrl(Room, $uibModal, Message, $cookies, Account, $firebaseObject) {
 
         //Room Service
         this.Room = Room;
@@ -185,6 +185,7 @@
         */
         $ctrl.setActiveRoom = function(room) {
             $ctrl.activeRoom = room;
+						// console.log($ctrl.activeRoom);
             $ctrl.getCurrentUsername();
 //            console.log('$ctrl.activeRoom', $ctrl.activeRoom.$id);
 //            console.log($ctrl.newMessage);
@@ -205,6 +206,11 @@
             }
         };
 
+				/**
+        * @function userHasAccess
+        * @desc Checks currentUser should have access to private room
+        * @param {Object} item
+        */
 				$ctrl.userHasAccess = function(room, userId) {
 					// console.log(room["users"]);
 					// console.log(userId);
@@ -214,9 +220,23 @@
 						return false;
 					}
 				};
+
+				$ctrl.addUserToRoom = function(userEmail) {
+					console.log($ctrl.activeRoom);
+					var userObj = $ctrl.Account.getUserByEmail(userEmail);
+					userObj.$loaded().then(function(users) {
+						var user = users[0];
+						console.log(user.$id);
+						console.log($ctrl.activeRoom); // $ctrl.activeRoom = null | I think because the controller reloads for the modal?
+						var room = Room.all[0]; // TODO need to get currentRoom instead of first room
+						console.log(room);
+						room.users[user.$id] = true;
+						room.$save(); // TODO $save is not a function
+					})
+				};
     }
 
     angular
         .module('blocChat')
-        .controller('RoomCtrl', ['Room', '$uibModal', 'Message', '$cookies', 'Account', RoomCtrl]);
+        .controller('RoomCtrl', ['Room', '$uibModal', 'Message', '$cookies', 'Account', '$firebaseObject', RoomCtrl]);
 })();

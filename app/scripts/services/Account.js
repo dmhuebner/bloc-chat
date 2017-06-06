@@ -1,5 +1,5 @@
 (function() {
-    function Account($cookies, $firebaseAuth, $firebaseObject) {
+    function Account($cookies, $firebaseAuth, $firebaseObject, $firebaseArray) {
 
         var ref = firebase.database().ref().child('users');
 
@@ -39,6 +39,12 @@
 									return currentUserId;
 							}
 						},
+						getUserByEmail: function(email) {
+								var tempRef = ref.orderByChild('email').equalTo(email);
+								users = $firebaseArray(tempRef);
+								console.log(users);
+								return users;
+						},
             getCurrentUser: function() {
                 var currentUserAuthObj = Account.auth.$getAuth();
                 if (currentUserAuthObj) {
@@ -49,11 +55,11 @@
 										return Account.currentUser;
                 }
             },
-            createUsername: function(newUsername) {
+            createUsername: function(newUser) {
                 var currentUserAuthObj = Account.auth.$getAuth();
                 if (currentUserAuthObj) {
                     var currentUserId = currentUserAuthObj.uid;
-                    users[currentUserId] = newUsername;
+                    users[currentUserId] = newUser;
                     users.$save();
                 }
             },
@@ -64,5 +70,5 @@
 
     angular
         .module('blocChat')
-        .factory('Account', ['$cookies', '$firebaseAuth', '$firebaseObject', Account]);
+        .factory('Account', ['$cookies', '$firebaseAuth', '$firebaseObject', '$firebaseArray', Account]);
 })();

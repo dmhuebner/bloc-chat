@@ -9,10 +9,10 @@
         <form class="new-room-form">
 						<div class="form-group">
 							<label for="new-room-name">Enter a user's email to add</label>
-	            <input type="text" name="new-room" placeholder="Enter user's email to add" id="new-room-name" ng-model="$ctrl.newRoom" class="form-control">
+	            <input type="text" name="new-room" placeholder="Enter user's email to add" id="new-room-name" ng-model="email" class="form-control">
 						</div>
             <button type="button" class="btn btn-default cancel" ng-click="main.cancel()">Cancel</button>
-            <button type="submit" class="btn btn-primary submit-new-room" ng-click="$ctrl.addRoom($ctrl.newRoom)">Add User</button>
+            <button type="submit" class="btn btn-primary submit-new-room" ng-click="main.addUserToRoom(email)">Add User</button>
         </form>
     </div>
 </div>

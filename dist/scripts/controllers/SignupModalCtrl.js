@@ -47,7 +47,9 @@
                 .then(function(firebaseUser) {
                     // console.log("User " + firebaseUser.uid + " created successfully!");
                     $ctrl.Account.currentUserId = firebaseUser.uid;
-                    $ctrl.Account.createUsername($ctrl.Account.usernameInput);
+										var newUserEmail = firebaseUser.email;
+										console.log(firebaseUser.email);
+                    $ctrl.Account.createUsername({name: $ctrl.Account.usernameInput, email: newUserEmail});
                     $ctrl.setUsername($ctrl.Account.usernameInput);
                     // $uibModalInstance.dismiss('submit');
 										location.reload();

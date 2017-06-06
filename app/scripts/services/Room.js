@@ -11,12 +11,12 @@
 						// 		var tempRef = ref.child('users');
 						// 		return $firebaseObject(tempRef.child(userId))
 						// },
-						getByUserId: function(room, userId) {
-							var roomUsersRef = room.ref().child('users');
-							var tempRef = roomUsersRef.orderByChild('users').child('').equalTo(userId);
-							tasks = $firebaseArray(tempRef);
-							return tasks;
-						}
+						// getByUserId: function(room, userId) {
+						// 	var roomUsersRef = room.ref().child('users');
+						// 	var tempRef = roomUsersRef.orderByChild('users').child('').equalTo(userId);
+						// 	rooms = $firebaseArray(tempRef);
+						// 	return rooms;
+						// }
         };
     }
 

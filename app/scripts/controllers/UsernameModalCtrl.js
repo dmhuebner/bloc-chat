@@ -90,11 +90,11 @@
                 .catch(function(error) {
                     console.error("Authentication failed:", error);
 										alert("Authentication failed!: " + "\n" + error);
+										if (error == null) {
+											$uibModalInstance.dismiss('submit');
+										}
                 });
 //                $ctrl.getCurrentUser();
-								if (error == null) {
-									$uibModalInstance.dismiss('submit');
-								}
             }
         };
 
