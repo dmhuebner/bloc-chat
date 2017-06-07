@@ -224,7 +224,7 @@
 				};
 
 				$ctrl.addUserToRoom = function(userEmail) {
-					console.log($ctrl.activeRoom);
+					// console.log($ctrl.activeRoom);
 					var userObj = $ctrl.Account.getUserByEmail(userEmail);
 					userObj.$loaded().then(function(users) {
 						var user = users[0];
@@ -234,8 +234,8 @@
 						console.log(room);
 
 						room.users[user.$id] = true;
-						Room.save(room); // TODO $save is not a function
-					})
+						Room.save(room);
+					});
 				};
     }
 

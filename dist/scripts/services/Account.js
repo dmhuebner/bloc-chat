@@ -25,7 +25,7 @@
         return {
             currentUsername: $cookies.get('blocChatCurrentUser'),
             getCurrentUsername: function() {
-                return $cookies.get('blocChatCurrentUser')
+                return $cookies.get('blocChatCurrentUser').name;
             },
             login: function(email, password) {
                 auth.$signInWithEmailAndPassword(email, password);

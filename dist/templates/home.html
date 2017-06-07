@@ -20,7 +20,7 @@
 				<div class="rooms-list">
 					<h5 class="room-list-heading">My Private Rooms</h5>
 					<ul class="private-rooms-list">
-							<li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room)}" ng-show="main.userHasAccess(room, 'cH3XNWM1bXRywl6b9GHXUAbZres1')">{{room.name}}</li>
+							<li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room)}" ng-show="main.userHasAccess(room, main.Account.getCurrentUserId())">{{room.name}}</li>
 					</ul>
 					<br />
 					<h5 class="room-list-heading">Pubic Rooms</h5>

@@ -9,15 +9,14 @@
         return {
             all: rooms,
 						setActive: function(room) {
-							console.log(room);
+							// console.log(room);
 							activeRoom = room;
 						},
 						getActive: function() {
 							return activeRoom;
 						},
 						save: function(room) {
-							var room = $firebaseObject(room.$id);
-							room.$save;
+							rooms.$save(room);
 						}
 						// getByUserId: function(userId) {
 						// 		var tempRef = ref.child('users');
