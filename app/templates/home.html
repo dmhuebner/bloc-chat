@@ -2,7 +2,10 @@
 
     <!-- Top Nav Bar -->
 		<section class="top-nav-bar">
-			<h4 class="room-name pull-left">{{main.activeRoom.$value}}</h4>
+			<div class="pull-left">
+				<h4 class="room-name pull-left">{{main.activeRoom.name}}</h4>
+				<a href="#" class="btn btn-default pull-left add-user-button" ng-show="main.activeRoom.private" ng-click="main.openAddUserModal('sm')">Add Someone</a>
+			</div>
 			<aside class="pull-right username-aside">
 					<h4 class="username-display" ng-show="main.Account.currentUsername">Hello {{main.Account.currentUsername}}!</h4>
 					<button href="" class="not-username-btn btn btn-default btn-xs" ng-show="main.Account.currentUsername" ng-click="main.logout()"><h6 class="small">Logout</h6></button>
@@ -14,9 +17,17 @@
     <aside class="rooms-aside col-sm-4 col-lg-3 scrollable">
         <h2 class="app-title">Bloc Chat</h2>
         <button class="btn btn-md btn-default pull-right new-room-button" ng-click="main.openNewRoomModal('sm')">New Room</button>
-        <ul class="rooms-list">
-            <li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room.$value)}">{{room.$value}}</li>
-        </ul>
+				<div class="rooms-list">
+					<h5 class="room-list-heading">My Private Rooms</h5>
+					<ul class="private-rooms-list">
+							<li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room)}" ng-show="main.userHasAccess(room, main.Account.getCurrentUserId())">{{room.name}}</li>
+					</ul>
+					<br />
+					<h5 class="room-list-heading">Pubic Rooms</h5>
+	        <ul class="public-rooms-list">
+	            <li class="room" ng-repeat="room in main.Room.all" ng-click="main.setActiveRoom(room)" ng-class="{active: main.isActive(room)}" ng-hide="room.private">{{room.name}}</li>
+	        </ul>
+				</div>
     </aside>
 
     <!-- Message List -->

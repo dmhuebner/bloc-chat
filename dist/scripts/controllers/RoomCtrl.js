@@ -41,6 +41,23 @@
             });
         };
 
+				//$uibModal service openModalInstance (Add user to room modal)
+				$ctrl.openAddUserModal = function(size) {
+						var modalInstance = $uibModal.open({
+								ariaLabelledBy: 'modal-title',
+								ariaDescribedBy: 'modal-body',
+								templateUrl: '/templates/add-user-modal.html',
+								controller: 'AddUserModalCtrl',
+								controllerAs: '$ctrl',
+								size: size,
+								resolve: {
+										rooms: function () {
+												return $ctrl.rooms;
+										}
+								}
+						});
+				};
+
         //$uibModal service openModalInstance (username modal)
         $ctrl.openUsernameModal = function() {
             $uibModal.open({
@@ -64,7 +81,7 @@
         * @desc Declare activeRoom
         * @type {Object}
         */
-        $ctrl.activeRoom = null;
+        // $ctrl.activeRoom = null;
 
         $ctrl.activeUser = Account.currentUser;
 
@@ -168,6 +185,9 @@
         */
         $ctrl.setActiveRoom = function(room) {
             $ctrl.activeRoom = room;
+						Room.setActive(room);
+						// console.log(Room.getActive());
+						// console.log($ctrl.activeRoom);
             $ctrl.getCurrentUsername();
 //            console.log('$ctrl.activeRoom', $ctrl.activeRoom.$id);
 //            console.log($ctrl.newMessage);
@@ -184,9 +204,40 @@
         */
         $ctrl.isActive = function(item) {
             if ($ctrl.activeRoom) {
-                return $ctrl.activeRoom.$value === item;
+                return $ctrl.activeRoom === item;
             }
         };
+
+				/**
+        * @function userHasAccess
+        * @desc Checks currentUser should have access to private room
+        * @param {Object} item
+        */
+				$ctrl.userHasAccess = function(room, userId) {
+					// console.log(room["users"]);
+					// console.log(userId);
+					if (room.private && room["users"].hasOwnProperty(userId)) {
+						return true;
+					} else {
+						return false;
+					}
+				};
+
+				// $ctrl.addUserToRoom = function(userEmail) {
+				// 	// console.log($ctrl.activeRoom);
+				// 	var userObj = $ctrl.Account.getUserByEmail(userEmail);
+				// 	userObj.$loaded().then(function(users) {
+				// 		var user = users[0];
+				// 		console.log(user.$id);
+				// 		console.log(Room.getActive());
+				// 		var room = Room.getActive();
+				// 		console.log(room);
+				//
+				// 		room.users[user.$id] = true;
+				// 		Room.save(room);
+				// 		$uibModalInstance.dismiss('submit');
+				// 	});
+				// };
     }
 
     angular
