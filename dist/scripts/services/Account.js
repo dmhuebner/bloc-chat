@@ -34,7 +34,7 @@
 						getCurrentUserId: function() {
 							var currentUserAuthObj = Account.auth.$getAuth();
 							if (currentUserAuthObj) {
-									console.log(currentUserAuthObj);
+									// console.log(currentUserAuthObj);
 									var currentUserId = currentUserAuthObj.uid;
 									return currentUserId;
 							}
@@ -42,7 +42,7 @@
 						getUserByEmail: function(email) {
 								var tempRef = ref.orderByChild('email').equalTo(email);
 								users = $firebaseArray(tempRef);
-								console.log(users);
+								// console.log(users);
 								return users;
 						},
             getCurrentUser: function() {

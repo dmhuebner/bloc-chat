@@ -84,8 +84,12 @@
                     Account.currentUserId = firebaseUser.uid;
                     var activeUser = $ctrl.Account.users[Account.currentUserId];
                     $ctrl.getCurrentUser();
-                    $ctrl.setUsername(activeUser);
-                    location.reload();
+										if (activeUser.name) {
+											$ctrl.setUsername(activeUser.name);
+											location.reload();
+										} else {
+											alert('There is no username associated with that account');
+										}
                 })
                 .catch(function(error) {
                     console.error("Authentication failed:", error);

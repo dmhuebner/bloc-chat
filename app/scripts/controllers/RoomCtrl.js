@@ -47,8 +47,8 @@
 								ariaLabelledBy: 'modal-title',
 								ariaDescribedBy: 'modal-body',
 								templateUrl: '/templates/add-user-modal.html',
-								controller: 'RoomCtrl',
-								controllerAs: 'main',
+								controller: 'AddUserModalCtrl',
+								controllerAs: '$ctrl',
 								size: size,
 								resolve: {
 										rooms: function () {
@@ -223,20 +223,21 @@
 					}
 				};
 
-				$ctrl.addUserToRoom = function(userEmail) {
-					// console.log($ctrl.activeRoom);
-					var userObj = $ctrl.Account.getUserByEmail(userEmail);
-					userObj.$loaded().then(function(users) {
-						var user = users[0];
-						console.log(user.$id);
-						console.log(Room.getActive());
-						var room = Room.getActive();
-						console.log(room);
-
-						room.users[user.$id] = true;
-						Room.save(room);
-					});
-				};
+				// $ctrl.addUserToRoom = function(userEmail) {
+				// 	// console.log($ctrl.activeRoom);
+				// 	var userObj = $ctrl.Account.getUserByEmail(userEmail);
+				// 	userObj.$loaded().then(function(users) {
+				// 		var user = users[0];
+				// 		console.log(user.$id);
+				// 		console.log(Room.getActive());
+				// 		var room = Room.getActive();
+				// 		console.log(room);
+				//
+				// 		room.users[user.$id] = true;
+				// 		Room.save(room);
+				// 		$uibModalInstance.dismiss('submit');
+				// 	});
+				// };
     }
 
     angular
