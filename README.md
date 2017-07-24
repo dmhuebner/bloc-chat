@@ -1,13 +1,13 @@
-##SUMMARY
+### SUMMARY
 
-Bloc Chat is a simple instant messaging application built with *JavaScript*, *Angular.js* and *Firebase*. It uses the Firebase AngularFire module to provide a real-time backend with three-way data binding and includes user signup and authentication.
+Bloc Chat is a simple instant messaging application built with **JavaScript**, **Angular.js** and **Firebase**. It uses the Firebase AngularFire module to provide a real-time backend with three-way data binding and includes user signup and authentication.
 
 
-##TECHNOLOGIES USED
+### TECHNOLOGIES USED
 
-*HTML5, CSS3, JavaScript, jQuery, Angular.js, Firebase, AngularFire, UI Bootstrap, Grunt, Git*
+**HTML5, CSS3, JavaScript, jQuery, Angular.js, Firebase, AngularFire, UI Bootstrap, Grunt, Git**
 
-##EXPLANATION
+### EXPLANATION
 
 The goal of this project was to create a simple instant messaging application with JavaScript, Angular.js, and Firebase that features three way data binding and real-time application updates without refreshing the page. It was created according to user stories provided in the Bloc Full Stack Developer curriculum.
 
